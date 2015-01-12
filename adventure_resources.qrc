@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets/DeathRace_Mustang.png</file>
+    </qresource>
+</RCC>
