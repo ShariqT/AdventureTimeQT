@@ -31,6 +31,7 @@ private slots:
     void changeCentralWidget(QString windowToTransition);
     void updatePlayerStats(QVector<int> newStats);
     void updatePlayerName(QString newName);
+    void savePlayerJson();
 };
 
 #endif // ADVENTURETIMEPROGRAM_H

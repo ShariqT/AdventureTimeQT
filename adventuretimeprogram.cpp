@@ -15,6 +15,7 @@ AdventureTimeProgram::AdventureTimeProgram(QWidget *parent) :
     ui->setupUi(this);
     screen = new StartWindow(this);
     setCentralWidget(screen);
+    connect(ui->actionSave_Profile, SIGNAL(triggered()), this, SLOT(savePlayerJson()));
 }
 
 AdventureTimeProgram::~AdventureTimeProgram()
@@ -22,6 +23,15 @@ AdventureTimeProgram::~AdventureTimeProgram()
     delete ui;
 }
 
+
+void AdventureTimeProgram::savePlayerJson(){
+    if(player->save()){
+        qWarning()  << "Saved player data!";
+    }else{
+        qDebug() << "Could not have saved player json!";
+    }
+
+}
 
 void AdventureTimeProgram::changeCentralWidget(QString windowName){
     delete screen;
@@ -57,7 +67,7 @@ void AdventureTimeProgram::updatePlayerStats(QVector<int> stats){
     player->setRanged(stats.at(3));
     player->setMech(stats.at(4));
     player->setTech(stats.at(5));
-    player->save();
+
 }
 
 void AdventureTimeProgram::updatePlayerName(QString newName){

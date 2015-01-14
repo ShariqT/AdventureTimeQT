@@ -7,6 +7,13 @@ Player::Player()
 {
     //on inital construction, we don't add anything to the attributes
     //
+    _health = 0;
+    _stress = 0;
+    _melee = 0;
+    _ranged = 0;
+    _playerName = "";
+    _mech = 0;
+    _tech = 0;
 }
 
 Player::~Player()
