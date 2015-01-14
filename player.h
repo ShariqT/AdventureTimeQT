@@ -22,6 +22,7 @@ public:
     void setPlayerName( QString newName );
     void setTech(int newTech);
     void loadViaSaveFile();
+    bool save();
 
 private:
     int _health;

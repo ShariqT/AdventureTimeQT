@@ -36,6 +36,7 @@ void AdventureTimeProgram::changeCentralWidget(QString windowName){
         setCentralWidget(screen);
         qDebug() << windowName;
         connect(centralWidget(), SIGNAL(updatePlayer(QVector<int>)),this, SLOT(updatePlayerStats(QVector<int>)));
+        connect(centralWidget(), SIGNAL(updatePlayerName(QString)), this, SLOT(updatePlayerName(QString)));
     }
 
 }
@@ -56,9 +57,15 @@ void AdventureTimeProgram::updatePlayerStats(QVector<int> stats){
     player->setRanged(stats.at(3));
     player->setMech(stats.at(4));
     player->setTech(stats.at(5));
-    qDebug() << player->health();
+    player->save();
 }
 
 void AdventureTimeProgram::updatePlayerName(QString newName){
     player->setPlayerName(newName);
+    qDebug() << "The new player name is " << player->playerName();
+    if(player->save()){
+     qDebug() << "file was saved!";
+    }else{
+        qDebug() << "file was not saved!";
+    }
 }

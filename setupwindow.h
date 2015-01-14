@@ -27,7 +27,7 @@ public:
 
 signals:
     void updatePlayer(QVector<int> newStats);
-
+    void updatePlayerName(QString newName);
 
 private:
     Ui::SetupWindow *ui;

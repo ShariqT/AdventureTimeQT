@@ -62,7 +62,7 @@ void SetupWindow::on_continueButton_clicked(){
     newStats.append(tmp_tech);
 
     emit updatePlayer(newStats);
-
+    emit updatePlayerName(ui->characterName->text());
 
 }
 

@@ -1,8 +1,12 @@
 #include "player.h"
+#include <QJsonObject>
+#include <QJsonDocument>
+#include <QFile>
 
 Player::Player()
 {
     //on inital construction, we don't add anything to the attributes
+    //
 }
 
 Player::~Player()
@@ -73,4 +77,23 @@ void Player::loadViaSaveFile(){
 }
 
 
+bool Player::save(){
+    QFile saveFile("player.json");
+    QJsonObject playerJsonObj;
+    playerJsonObj["health"] = _health;
+    playerJsonObj["stress"] = _stress;
+    playerJsonObj["melee"] = _melee;
+    playerJsonObj["ranged"] = _ranged;
+    playerJsonObj["mech"] = _mech;
+    playerJsonObj["tech"] = _tech;
+    playerJsonObj["name"] = _playerName;
+
+    if(!saveFile.open(QIODevice::WriteOnly)){
+        return false;
+    }
+
+    QJsonDocument playerJSON(playerJsonObj);
+    saveFile.write(playerJSON.toJson());
+    return true;
+}
 
